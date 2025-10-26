@@ -2,28 +2,30 @@
 
 ### 1. Overview
 This method compares the long-term performance of NASDAQ ETFs, which are value-weighted, with equally-weighted portfolios built from individual stocks.  
-It helps assess whether the overall market performance is mainly driven by large-cap firms (“leaders”) or whether smaller companies (“followers”) also play a significant role.  
+It helps assess whether overall market performance is mainly driven by large-cap firms (“leaders”) or whether smaller companies (“followers”) also play a significant role.  
 The method can be applied both globally (entire market) and by sector, using the ETF and stock data available in our datasets.
 
 ---
 
 ### 2. Method Explanation
 
-ETFs are value-weighted financial instruments, meaning that the weight of each stock in the portfolio is proportional to its market capitalization.  
-In practice, this implies that a company such as Apple or Microsoft contributes much more to the ETF’s overall return than a small-cap stock.  
-Thus, ETFs largely reflect the behavior of the market leaders within each sector.
+ETFs and equally-weighted portfolios differ mainly in how they assign weights to each company within the portfolio.  
+While ETFs are **value-weighted**, giving more importance to large firms with higher market capitalization, equally-weighted portfolios treat every company the same, regardless of size.  
+This structural difference allows us to measure whether the performance of a sector or the overall market is concentrated among large firms or shared more evenly across all companies.
 
-By contrast, an equally-weighted portfolio assigns the same weight to each stock, regardless of its market capitalization.  
-This portfolio can be seen as the average performance of all firms, where large and small companies have the same influence.  
-In an equally-weighted setup, each stock represents a fraction 1/n of the portfolio, where n is the total number of firms included.  
-Such a portfolio is rebalanced regularly (e.g., daily, weekly, or monthly) to maintain equal weights as prices evolve.
+| Feature | ETF (Value-weighted) | Equally-weighted Portfolio |
+|:--|:--|:--|
+| **Weighting principle** | Each stock’s weight is proportional to its market capitalization | Each stock has the same weight (1/n) |
+| **Main contributors** | Large-cap companies dominate returns | All firms contribute equally |
+| **Economic meaning** | Reflects the performance of sector leaders | Reflects the average performance of all firms |
+| **Typical bias** | Sensitive to movements of a few big firms | More volatile due to exposure to small caps |
+| **Portfolio maintenance** | No rebalancing needed (weights change with prices) | Requires periodic rebalancing to maintain equal weights |
+| **Interpretation in this project** | Measures performance driven by market leaders | Captures the collective behavior of followers |
 
-The difference between value-weighted and equally-weighted performances provides a clear measure of how much large companies dominate market movements.  
-If the ETF (value-weighted) outperforms the equally-weighted portfolio, it suggests that sector performance is mainly driven by the largest firms.  
-If the equally-weighted portfolio performs better, smaller firms have had a greater contribution or higher growth relative to the leaders.
-
-For sector-level analysis, we can construct an equally-weighted portfolio using all firms belonging to a given sector (as defined in Dataset 2) and compare it with the corresponding sector ETF included in Dataset 1.  
-This allows us to assess leadership effects within each specific industry, such as technology, healthcare, or energy.
+By comparing their respective performances, we can evaluate the dominance of large firms.  
+If the ETF outperforms the equally-weighted portfolio, sector performance is likely driven by large-cap leaders.  
+Conversely, if the equally-weighted portfolio performs better, small and mid-sized firms are playing a greater role in driving returns.  
+At the sector level, the same comparison can be made using the relevant sector ETF (from Dataset 1) and the equally-weighted portfolio of all firms belonging to that sector (from Dataset 2).
 
 ---
 
@@ -37,14 +39,14 @@ The analysis relies on two complementary datasets:
 
 - **Dataset 2 – NASDAQ Company List**  
   Provides metadata including Symbol, Name, MarketCap, Sector, and Industry.  
-  This dataset allows us to group companies by sector and classify them according to their market capitalization.
+  This dataset allows grouping companies by sector and ranking them by market capitalization.
 
-Using these datasets, the steps are as follows:
+**Implementation steps:**
 1. Match each stock from Dataset 1 with its corresponding sector and market capitalization from Dataset 2.  
 2. For each sector, compute the equally-weighted portfolio return by averaging the daily returns of all firms in that sector.  
-3. Retrieve the relevant ETF prices (global or sector-specific) and compute their daily and annualized returns.  
-4. Compare the cumulative and annualized performances of the ETF and the equally-weighted portfolio to measure the dominance of large firms over smaller ones.  
-5. Extend the analysis to compare results across sectors and during different market conditions (calm vs volatile periods).
+3. Compute ETF returns using the sector or global ETFs available in Dataset 1.  
+4. Compare cumulative and annualized performances between the ETF and the equally-weighted portfolio to evaluate leadership effects.  
+5. Extend the analysis by observing variations across sectors and between stable and volatile market periods.
 
 ---
 
@@ -52,6 +54,6 @@ Using these datasets, the steps are as follows:
 
 This analysis may be affected by **survivorship bias**, since the dataset includes only companies that were still listed on NASDAQ in 2020.  
 This can overstate the average performance of small firms that survived while excluding those that exited earlier.  
-To mitigate this effect, results will be compared with ETF performance, which reflects continuous index rebalancing and company turnover.
+To mitigate this effect, results are compared with ETF performance, which inherently reflects continuous rebalancing and company turnover within the index.
 
 ---

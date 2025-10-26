@@ -3,7 +3,7 @@
 ### 1. Overview
 This method compares the long-term performance of NASDAQ ETFs, which are value-weighted, with equally-weighted portfolios built from individual stocks.  
 It helps assess whether overall market performance is mainly driven by large-cap firms (“leaders”) or whether smaller companies (“followers”) also play a significant role.  
-The method can be applied both globally (entire market) and by sector, using the ETF and stock data available in our datasets.
+The method can be applied both globally (entire market) and by sector, using the sectorial ETFs and stock data available in our datasets.
 
 ---
 
@@ -18,8 +18,6 @@ This structural difference allows us to measure whether the performance of a sec
 | **Weighting principle** | Each stock’s weight is proportional to its market capitalization | Each stock has the same weight (1/n) |
 | **Main contributors** | Large-cap companies dominate returns | All firms contribute equally |
 | **Economic meaning** | Reflects the performance of sector leaders | Reflects the average performance of all firms |
-| **Typical bias** | Sensitive to movements of a few big firms | More volatile due to exposure to small caps |
-| **Portfolio maintenance** | No rebalancing needed (weights change with prices) | Requires periodic rebalancing to maintain equal weights |
 | **Interpretation in this project** | Measures performance driven by market leaders | Captures the collective behavior of followers |
 
 By comparing their respective performances, we can evaluate the dominance of large firms.  

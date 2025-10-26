@@ -27,7 +27,7 @@ At the sector level, the same comparison can be made using the relevant sector E
 
 ---
 
-### 3. Analytical Workflow
+### 3. Implementation with the Data
 
 The analysis relies on our two datasets:
 

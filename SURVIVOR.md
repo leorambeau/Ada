@@ -6,4 +6,6 @@ This exclusion primarily affects small and mid-cap firms, which are more likely 
 
 #### How to limit this bias
 One possible way to reduce survivorship bias is to shorten the analysis window to recent years, such as 2015–2020, when the probability of firm disappearance is lower.  
-Another approach is to compare results with ETF data, which are continuously rebalanced and thus implicitly account for company turnover.
+Another complementary approach is to **weight companies according to their lifespan on the market**, using the *IPOyear* information available in Dataset 2.  
+Firms that have been listed for a longer period can be assigned a higher weight, as they represent a more stable segment of the market, while recently listed firms—more likely to drop out of the dataset—receive lower weights.  
+Finally, comparing results with ETF data, which are continuously rebalanced and automatically adjust for company entry and exit, provides an additional robustness check against this bias.

@@ -1,7 +1,7 @@
 ### Survivorship Bias
 
-A potential limitation of this analysis is the presence of survivorship bias.  
-Since the dataset only includes companies that were still listed on NASDAQ in 2020, firms that went bankrupt, were delisted, or merged before that date are not represented.  
-This limitation may lead to an overestimation of market and especially small-cap performance, as only the firms that survived are observed.  
-To mitigate this effect, the study compares results with sectoral and global ETFs, which continuously rebalance and thus account for firm entry and exit over time.  
-Additional robustness checks, such as segmenting firms by market capitalization or restricting the analysis to shorter time windows, further help to reduce the influence of this bias.
+A general limitation that affects all analyses in this project is the presence of survivorship bias.  
+Because the NASDAQ dataset only includes companies that were still active and listed in 2020, firms that went bankrupt, were delisted, or merged before that date are missing from the data.  
+This exclusion primarily affects small and mid-cap firms, which are more likely to disappear over time, and may lead to an overestimation of their average performance or an underestimation of market volatility.  
+To reduce the impact of this bias, the project compares results with global and sectoral ETFs, which are continuously rebalanced and therefore reflect firm turnover.  
+Additional robustness checks—such as dividing firms into size categories, using shorter time windows, and cross-validating with sector-level aggregates—help ensure that observed leader–follower patterns are not driven by sample survivorship.

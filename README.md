@@ -17,7 +17,6 @@ This structural difference allows us to measure whether the performance of a sec
 |:--|:--|:--|
 | **Weighting principle** | Each stock’s weight is proportional to its market capitalization | Each stock has the same weight (1/n) |
 | **Main contributors** | Large-cap companies dominate returns | All firms contribute equally |
-| **Economic meaning** | Reflects the performance of sector leaders | Reflects the average performance of all firms |
 | **Interpretation in this project** | Measures performance driven by market leaders | Captures the collective behavior of followers |
 
 By comparing their respective performances, we can evaluate the dominance of large firms.  

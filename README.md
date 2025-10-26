@@ -42,8 +42,7 @@ The analysis relies on our two datasets:
 **Implementation steps:**
 
 1. **Data preparation:**  
-   Match each stock from Dataset 1 with its corresponding sector and market capitalization from Dataset 2.  
-   Filter out incomplete or illiquid securities.
+   Match each stock from Dataset 1 with its corresponding sector and market capitalization from Dataset 2.
 
 2. **Global analysis:**  
    - Build an **Equally-Weighted (EW) global portfolio** including all stocks in the dataset.  

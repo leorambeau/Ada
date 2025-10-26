@@ -29,29 +29,37 @@ At the sector level, the same comparison can be made using the relevant sector E
 
 ### 3. Analytical Workflow
 
-The analysis relies on two complementary datasets:
+The analysis relies on our two datasets:
 
 - **Dataset 1 – Stock Market Dataset (NASDAQ historical daily prices)**  
   Contains daily prices (Open, High, Low, Close, Adjusted Close, and Volume) for both ETFs and individual stocks.  
-  These data are used to compute daily returns, cumulative returns, and volatility for each instrument.
+  These data are used to compute returns and risk metrics.
 
 - **Dataset 2 – NASDAQ Company List**  
   Provides metadata including Symbol, Name, MarketCap, Sector, and Industry.  
-  This dataset allows grouping companies by sector and ranking them by market capitalization.
+  This dataset allows grouping companies by sector and identifying firm size (leaders vs followers).
 
 **Implementation steps:**
-1. Match each stock from Dataset 1 with its corresponding sector and market capitalization from Dataset 2.  
-2. For each sector, compute the equally-weighted portfolio return by averaging the daily returns of all firms in that sector.  
-3. Compute ETF returns using the sector or global ETFs available in Dataset 1.  
-4. Compare cumulative and annualized performances between the ETF and the equally-weighted portfolio to evaluate leadership effects.  
-5. Extend the analysis by observing variations across sectors and between stable and volatile market periods.
 
----
+1. **Data preparation:**  
+   Match each stock from Dataset 1 with its corresponding sector and market capitalization from Dataset 2.  
+   Filter out incomplete or illiquid securities.
 
-### 4. Note on Data Bias
+2. **Global analysis:**  
+   - Build an **Equally-Weighted (EW) global portfolio** including all stocks in the dataset.  
+   - Compute the performance of **global ETFs** available in Dataset 1.  
+   - Compare both using key performance metrics:  
+     - **Cumulative returns** (overall growth over time),  
+     - **Annualized returns** (average yearly growth),  
+     - **Volatility** (standard deviation of daily returns),  
+     - **Sharpe ratio** (risk-adjusted performance).  
 
-This analysis may be affected by **survivorship bias**, since the dataset includes only companies that were still listed on NASDAQ in 2020.  
-This can overstate the average performance of small firms that survived while excluding those that exited earlier.  
-To mitigate this effect, results are compared with ETF performance, which inherently reflects continuous rebalancing and company turnover within the index.
+3. **Sector-level analysis:**  
+   - For each sector identified in Dataset 2, construct an **Equally-Weighted sector portfolio** averaging the returns of all companies in that sector.  
+   - Retrieve and analyze the **corresponding sector ETFs** from Dataset 1.  
+   - Compare performance across sectors using the same metrics as above to assess whether leadership dominance varies by industry.
+
+4. **Interpretation:**  
+   Evaluate whether large-cap firms (represented by ETFs) dominate performance globally and within sectors, and whether small and mid-cap companies exhibit stronger relative returns during specific market conditions (e.g., high volatility periods).
 
 ---
